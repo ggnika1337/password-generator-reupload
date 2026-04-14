@@ -24,27 +24,24 @@ import Image from "next/image";
 import { useState } from "react";
 import arrow from "../../../public/Arrow.svg";
 
-function Input(
-  {
-    onClickOne,
-    onClickTwo,
-    onClickThree,
-    onClickFour,
-    difficulty,
-    activeOne,
-    activeTwo,
-    activeThree,
-    activeFour,
-    colorOne,
-    colorTwo,
-    colorThree,
-    colorFour,
-    generate,
-    slider,
-    count,
-  },
-  props,
-) {
+function Input({
+  onClickOne,
+  onClickTwo,
+  onClickThree,
+  onClickFour,
+  difficulty,
+  activeOne,
+  activeTwo,
+  activeThree,
+  activeFour,
+  colorOne,
+  colorTwo,
+  colorThree,
+  colorFour,
+  generate,
+  slider,
+  count,
+}: props) {
   return (
     <>
       <div className="bg-[#24232C] w-full  p-[32px] max-md:p-[20px] flex flex-col gap-[30px]">
