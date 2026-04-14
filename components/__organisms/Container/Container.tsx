@@ -4,15 +4,20 @@ import Output from "@/components/__molecules/Output/Output";
 import React, { useEffect, useState } from "react";
 
 function Container() {
-  const [password, setPassword] = useState<String>("");
-  const [selected, setSelected] = useState<Array>([]);
-  const [length, setLength] = useState<Number>(8);
-  const [colorOne, setColorOne] = useState<String>("transparent");
-  const [colorTwo, setColorTwo] = useState<String>("transparent");
-  const [colorThree, setColorThree] = useState<String>("transparent");
-  const [colorFour, setColorFour] = useState<String>("transparent");
-  const [difficulty, setDifficulty] = useState<String>("");
-  const [checks, setChecks] = useState<Object>({
+  const [password, setPassword] = useState<string>("");
+  const [selected, setSelected] = useState<string[]>([]);
+  const [length, setLength] = useState<number>(8);
+  const [colorOne, setColorOne] = useState<string>("transparent");
+  const [colorTwo, setColorTwo] = useState<string>("transparent");
+  const [colorThree, setColorThree] = useState<string>("transparent");
+  const [colorFour, setColorFour] = useState<string>("transparent");
+  const [difficulty, setDifficulty] = useState<string>("");
+  const [checks, setChecks] = useState<{
+    uppercase: boolean;
+    lowercase: boolean;
+    symbols: boolean;
+    numbers: boolean;
+  }>({
     uppercase: false,
     lowercase: false,
     symbols: false,

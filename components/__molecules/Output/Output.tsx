@@ -4,15 +4,14 @@ import Copyimg from "../../../public/Copy.svg";
 import CopyHover from "../../../public/CopyHover.svg";
 import Image from "next/image";
 type props = {
-  copy: () => void;
   output: string;
 };
 
-function Output({ copy, output }: props) {
+function Output({ output }: props) {
   const [hovered, setHovered] = useState<Boolean>(false);
   const [copied, setCopied] = useState<Boolean>(false);
 
-  async function copy() {
+  async function copyFunction() {
     try {
       await navigator.clipboard.writeText(output);
       setCopied(true);
@@ -33,10 +32,15 @@ function Output({ copy, output }: props) {
           {output}
         </h1>
         <div className="flex gap-[15px]">
-          <h1 className="text-[18px] font-[700] text-[#A4FFAF]" style={{ display: copied ? "block" : "none" }}>COPIED</h1>
+          <h1
+            className="text-[18px] font-[700] text-[#A4FFAF]"
+            style={{ display: copied ? "block" : "none" }}
+          >
+            COPIED
+          </h1>
           <div
             className="relative size-[25px] cursor-pointer"
-            onClick={copy}
+            onClick={copyFunction}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
