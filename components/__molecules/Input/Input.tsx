@@ -44,7 +44,7 @@ function Input({
 }: props) {
   return (
     <>
-      <div className="bg-[#24232C] w-full  p-[32px] max-md:p-[20px] flex flex-col gap-[30px]">
+      <div className="bg-[#24232C] w-full  p-[28px] max-md:p-[20px] flex flex-col gap-[30px]">
         <Counter slider={slider} count={count} />
         <div className="flex flex-col gap-[20px]">
           <Check

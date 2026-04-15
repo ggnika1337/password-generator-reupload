@@ -27,7 +27,7 @@ function Output({ output }: props) {
 
   return (
     <>
-      <div className="w-full flex justify-between  items-center max-md:px-[14px] max-md:py-[18px] px-[32px] py-[24px] bg-[#24232C]">
+      <div className="w-full flex justify-between max-h-[65px]  items-center max-md:px-[18px] max-md:py-[18px] px-[28px] py-[20px] bg-[#24232C]">
         <h1 className="text-[#E6E5EA] font-bold text-[28px] max-md:text-[24px] max-sm:text-[20px]">
           {output}
         </h1>
