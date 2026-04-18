@@ -89,11 +89,7 @@ function Container() {
         <Output output={password} />
         <Input
           count={length}
-          slider={() => {
-            if (length === 20) return;
-
-            setLength(length + 1);
-          }}
+          slider={(val) => setLength(val)}
           generate={handleGeneration}
           colorOne={colorOne}
           colorTwo={colorTwo}

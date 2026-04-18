@@ -12,12 +12,14 @@ function Counter({ count, slider }: props) {
         <h1 className="text-[#A4FFAF] font-[700] text-[32px]">{count}</h1>
       </div>
       <div className="bg-[#18171F] h-[8px] w-full relative flex items-center">
-        <div className="bg-[#A4FFAF] h-[8px] items-center flex relative">
-          <div
-            onClick={slider}
-            className="bg-[#E6E5EA] rounded-full justify-self-end flex size-[28px] hover:bg-[#18171F] border-transparent border-[2px] hover:border-[#A4FFAF]"
-          ></div>
-        </div>
+        <input
+          type="range"
+          className="w-full active:color-[#18171F] cursor-pointer"
+          min={4}
+          max={20}
+          value={count}
+          onChange={(e) => slider(+e.target.value)}
+        />
       </div>
     </>
   );
