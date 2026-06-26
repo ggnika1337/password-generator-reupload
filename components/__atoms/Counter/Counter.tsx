@@ -1,7 +1,7 @@
 "use client";
 type props = {
   count: number;
-  slider: () => void;
+  slider: (value: number) => void;
 };
 
 function Counter({ count, slider }: props) {

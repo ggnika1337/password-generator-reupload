@@ -8,8 +8,8 @@ type props = {
 };
 
 function Output({ output }: props) {
-  const [hovered, setHovered] = useState<Boolean>(false);
-  const [copied, setCopied] = useState<Boolean>(false);
+  const [hovered, setHovered] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
 
   async function copyFunction() {
     try {
@@ -20,7 +20,7 @@ function Output({ output }: props) {
         setCopied(false);
         console.log(copied);
       }, 5000);
-    } catch (error) {
+    } catch {
       return;
     }
   }

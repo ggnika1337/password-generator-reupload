@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+body {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 * {
   transition: 0.3s all;
 }

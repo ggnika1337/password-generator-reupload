@@ -1,17 +1,39 @@
 "use client";
 import Input from "@/components/__molecules/Input/Input";
 import Output from "@/components/__molecules/Output/Output";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
+const strengthColors = {
+  empty: ["transparent", "transparent", "transparent", "transparent"],
+  tooWeak: ["#F64A4A", "transparent", "transparent", "transparent"],
+  weak: ["#FB7C58", "#FB7C58", "transparent", "transparent"],
+  medium: ["#F8CD65", "#F8CD65", "#F8CD65", "transparent"],
+  strong: ["#A4FFAF", "#A4FFAF", "#A4FFAF", "#A4FFAF"],
+};
+
+function getStrengthState(enabledOptions: number) {
+  if (enabledOptions === 1) {
+    return { difficulty: "too weak!", colors: strengthColors.tooWeak };
+  }
+
+  if (enabledOptions === 2) {
+    return { difficulty: "weak", colors: strengthColors.weak };
+  }
+
+  if (enabledOptions === 3) {
+    return { difficulty: "medium", colors: strengthColors.medium };
+  }
+
+  if (enabledOptions === 4) {
+    return { difficulty: "strong", colors: strengthColors.strong };
+  }
+
+  return { difficulty: "", colors: strengthColors.empty };
+}
 
 function Container() {
   const [password, setPassword] = useState<string>("");
-  const [selected, setSelected] = useState<string[]>([]);
   const [length, setLength] = useState<number>(8);
-  const [colorOne, setColorOne] = useState<string>("transparent");
-  const [colorTwo, setColorTwo] = useState<string>("transparent");
-  const [colorThree, setColorThree] = useState<string>("transparent");
-  const [colorFour, setColorFour] = useState<string>("transparent");
-  const [difficulty, setDifficulty] = useState<string>("");
   const [checks, setChecks] = useState<{
     uppercase: boolean;
     lowercase: boolean;
@@ -24,41 +46,9 @@ function Container() {
     numbers: false,
   });
 
-  function handleChecks() {
-    let strength = Object.values(checks).filter((item) => item === true).length;
-    if (strength === 0) {
-      setColorOne("transparent");
-      setDifficulty("");
-    } else if (strength === 1) {
-      setDifficulty("too weak!");
-      setColorOne("#F64A4A");
-      setColorTwo("transparent");
-      setColorThree("transparent");
-      setColorFour("transparent");
-    } else if (strength === 2) {
-      setDifficulty("weak");
-      setColorOne("#FB7C58");
-      setColorTwo("#FB7C58");
-      setColorThree("transparent");
-      setColorFour("transparent");
-    } else if (strength === 3) {
-      setDifficulty("medium");
-      setColorOne("#F8CD65");
-      setColorTwo("#F8CD65");
-      setColorThree("#F8CD65");
-      setColorFour("transparent");
-    } else if (strength === 4) {
-      setDifficulty("strong");
-      setColorOne("#A4FFAF");
-      setColorTwo("#A4FFAF");
-      setColorThree("#A4FFAF");
-      setColorFour("#A4FFAF");
-    }
-  }
-
-  useEffect(() => {
-    handleChecks();
-  }, [checks]);
+  const enabledOptions = Object.values(checks).filter(Boolean).length;
+  const { difficulty, colors } = getStrengthState(enabledOptions);
+  const [colorOne, colorTwo, colorThree, colorFour] = colors;
 
   function handleGeneration() {
     let selectedCharacters = "";
@@ -97,39 +87,15 @@ function Container() {
           colorFour={colorFour}
           onClickOne={() => {
             setChecks((prev) => ({ ...prev, uppercase: !prev.uppercase }));
-            if (selected.includes("uppercase")) {
-              return;
-            } else {
-              setSelected((prev) => [...prev, "uppercase"]);
-            }
-            console.log(selected);
           }}
           onClickTwo={() => {
             setChecks((prev) => ({ ...prev, lowercase: !prev.lowercase }));
-            if (selected.includes("lowercase")) {
-              return;
-            } else {
-              setSelected((prev) => [...prev, "lowercase"]);
-            }
-            console.log(selected);
           }}
           onClickThree={() => {
-            setChecks((prev) => ({ ...prev, symbols: !prev.symbols }));
-            if (selected.includes("symbols")) {
-              return;
-            } else {
-              setSelected((prev) => [...prev, "symbols"]);
-            }
-            console.log(selected);
+            setChecks((prev) => ({ ...prev, numbers: !prev.numbers }));
           }}
           onClickFour={() => {
-            setChecks((prev) => ({ ...prev, numbers: !prev.numbers }));
-            if (selected.includes("numbers")) {
-              return;
-            } else {
-              setSelected((prev) => [...prev, "numbers"]);
-            }
-            console.log(selected);
+            setChecks((prev) => ({ ...prev, symbols: !prev.symbols }));
           }}
           activeOne={checks.uppercase}
           activeTwo={checks.lowercase}

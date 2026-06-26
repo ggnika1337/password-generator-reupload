@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 type props = {
   difficulty: string;
   colorOne: string;

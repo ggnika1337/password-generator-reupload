@@ -14,14 +14,13 @@ type props = {
   colorThree: string;
   colorFour: string;
   generate: () => void;
-  slider: () => void;
+  slider: (value: number) => void;
   count: number;
 };
 import Check from "@/components/__atoms/Check/Check";
 import Counter from "@/components/__atoms/Counter/Counter";
 import Strength from "@/components/__atoms/Strength/Strength";
 import Image from "next/image";
-import { useState } from "react";
 import arrow from "../../../public/Arrow.svg";
 
 function Input({
